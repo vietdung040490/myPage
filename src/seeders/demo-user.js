@@ -9,8 +9,11 @@ module.exports = {
         lastName: "vn",
         address: "VN",
         gender: true,
-        typeRole: "R1",
-        keyRole: "admin",
+        roleId: "R1",
+        phoneNumber: "0973733307",
+        positionId: "",
+        image: "",
+
         createdAt: new Date(),
         updatedAt: new Date(),
       },
