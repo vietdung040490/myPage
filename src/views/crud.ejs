@@ -14,7 +14,7 @@
 
 <body>
     <div class="container mt-5">
-        <form class="row col-6 g-3">
+        <form class="row col-6 g-3" action="/post-crud" method="POST">
             <h1 class="pagination justify-content-center">Create new user</h1>
             <div class="col-6">
                 <label for="" class="form-label">Email</label>
@@ -44,7 +44,6 @@
             <div class="col-3">
                 <label for="" class="form-label">Gender</label>
                 <select class="form-select" name="gender">
-                    <option selected>Choose...</option>
                     <option value="1">Nam</option>
                     <option value="0">Nu</option>
                     <option>Khac</option>
@@ -52,8 +51,7 @@
             </div>
             <div class="col-3">
                 <label for="inputZip" class="form-label">Role</label>
-                <select class="form-select" name="roleIDroled">
-                    <option selected>Choose...</option>
+                <select class="form-select" name="roleId">
                     <option value="1">Admin</option>
                     <option value="2">Doctor</option>
                     <option value="3">Patient</option>
