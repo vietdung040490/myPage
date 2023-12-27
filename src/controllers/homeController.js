@@ -28,11 +28,19 @@ let postCrud = async (req, res) => {
 
 let displayCRUD = async (req, res) => {
   const data = await CRUDservice.getAllUser();
-  console.log("----------------------------");
-  console.log(data);
-  console.log("----------------------------");
+  return res.render("displayCRUD", {
+    data: data,
+  });
+};
 
-  return res.send("Display from displayCRUD");
+let editCrud = async (req, res) => {
+  let userId = req.query.id;
+  if (userId) {
+    let userInfo = await CRUDservice.getUserInfo(userId);
+    console.log("user info from homeController.js\n", userInfo);
+    return res.send("found an user");
+  }
+  return res.send("found no user");
 };
 module.exports = {
   getHomePage: getHomePage,
@@ -40,4 +48,5 @@ module.exports = {
   getCRUD: getCRUD,
   postCrud: postCrud,
   displayCRUD: displayCRUD,
+  editCrud: editCrud,
 };

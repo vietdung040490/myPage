@@ -5,7 +5,7 @@ const salt = bcrypt.genSaltSync(10);
 
 //tao user
 const createNewUser = async (data) => {
-  return new Promise(async (resolve, rejects) => {
+  return new Promise(async (resolve, reject) => {
     try {
       let hashPasswordFromBcrypt = await hasPassword(data.password);
       await db.User.create({
@@ -22,33 +22,45 @@ const createNewUser = async (data) => {
       });
       resolve("create new user ok");
     } catch (e) {
-      rejects(e);
+      reject(e);
     }
   });
 };
 
-//hast password
+//hash password
 const hasPassword = (password) => {
-  return new Promise(async (resolve, rejects) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      let hashPassword = await bcrypt.hashSync(password, salt);
+      let hashPassword = bcrypt.hashSync(password, salt);
       resolve(hashPassword);
     } catch (e) {
-      rejects(e);
+      reject(e);
     }
   });
 };
 
 //tim tat ca user
 const getAllUser = () => {
-  return new Promise(async (resolve, rejects) => {
+  return new Promise(async (resolve, reject) => {
     try {
       let arrayUsers = await db.User.findAll({
         raw: true,
       });
-      return resolve(arrayUsers);
+      resolve(arrayUsers);
     } catch (e) {
-      return rejects(e);
+      reject(e);
+    }
+  });
+};
+
+//tim user theo id
+const getUserInfo = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let userInfo = await db.User.findByPk(userId, { raw: true });
+      resolve(userInfo);
+    } catch (e) {
+      reject(e);
     }
   });
 };
@@ -56,4 +68,5 @@ const getAllUser = () => {
 module.exports = {
   createNewUser: createNewUser,
   getAllUser: getAllUser,
+  getUserInfo: getUserInfo,
 };

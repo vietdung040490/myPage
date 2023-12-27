@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 const { BOOLEAN } = require("sequelize");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Allcodes.init(
     {
-      // id: DataTypes.STRING,
       key: DataTypes.STRING,
       type: DataTypes.STRING,
       valueEn: DataTypes.STRING,
