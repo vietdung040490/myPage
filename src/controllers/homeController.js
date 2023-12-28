@@ -42,6 +42,7 @@ let editCrud = async (req, res) => {
   }
   return res.send("found no user");
 };
+
 module.exports = {
   getHomePage: getHomePage,
   getAboutPage: getAboutPage,
