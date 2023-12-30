@@ -63,7 +63,7 @@ let editCrud = async (req, res) => {
 let updateCrud = async(req, res) => {
   let data = req.body
   await CRUDservice.updateUser(data);
-  return res.send("update ok");
+  return res.send(" new update ok");
 };
 
 module.exports = {
