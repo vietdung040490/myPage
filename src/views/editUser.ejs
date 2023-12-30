@@ -1,0 +1,46 @@
+<div class="container mt-5">
+	<form class="row col-6 g-3" action="/updateCrud" method="POST">
+		<h1 class="pagination justify-content-center">Edit User</h1>
+
+		<div class="col-6">
+			<label for="" class="form-label">First Name</label>
+			<input type="text" class="form-control" name="firstName" value="<%=userInfo.firstName%>">
+		</div>
+		<div class="col-6">
+			<label for="" class="form-label">Last Name</label>
+			<input type="text" class="form-control" name="lastName" value="<%=userInfo.lastName%>">
+		</div>
+
+		<div class="col-12">
+			<label for="" class="form-label">Address</label>
+			<input type="text" class="form-control" name="address" value="<%=userInfo.address%>">
+		</div>
+
+		<div class="col-6">
+			<label for="" class="form-label">Phone number</label>
+			<input type="text" class="form-control" name="phoneNumber" value="<%=userInfo.phoneNumber%>">
+		</div>
+		<div class="col-3">
+			<label for="" class="form-label">Gender</label>
+			<select class="form-select" name="gender" value="<%=userInfo.gender%>">
+				<option value="1">Nam</option>
+				<option value="0">Nu</option>
+				<option>Khac</option>
+			</select>
+		</div>
+		<div class="col-3">
+			<label for="inputZip" class="form-label">Role</label>
+			<select class="form-select" name="roleId">
+				<option value="1">Admin</option>
+				<option value="2">Doctor</option>
+				<option value="3">Patient</option>
+				<option>...</option>
+			</select>
+		</div>
+
+		<div class="col-12">
+			<button type="submit" class="btn btn-primary">Update</button>
+		</div>
+		<div hidden value="<%=userInfo.id%>"></div>
+	</form>
+</div>
