@@ -54,19 +54,40 @@ const getAllUser = () => {
 };
 
 //tim user theo id
-const getUserInfo = (userId) => {
+const getDataToEditUser = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let userInfo = await db.User.findByPk(userId, { raw: true });
-      resolve(userInfo);
+      let data = await db.User.findByPk(userId, { raw: true });
+      resolve(data);
+      console.log(data);
     } catch (e) {
       reject(e);
     }
   });
 };
 
+const updateUser = (data) => {
+  //   return new Promise(async (resolve, reject) => {
+  //     try {
+  //       let user = await db.User.create({
+  //         id: data.id,
+  //       });
+  //       user.firstName = data.firstName;
+  //       user.lastName = data.lastName;
+  //       user.address = data.address;
+  //       user.phoneNumber = data.phoneNumber;
+  //       await user.save();
+  //       resolve(user);
+  //     } catch (e) {
+  //       reject(e);
+  //     }
+  //   });\
+  console.log(data);
+};
+
 module.exports = {
   createNewUser: createNewUser,
   getAllUser: getAllUser,
-  getUserInfo: getUserInfo,
+  getDataToEditUser: getDataToEditUser,
+  updateUser: updateUser,
 };

@@ -45,10 +45,11 @@ let displayCRUD = async (req, res) => {
   });
 };
 
+//edit user, click button: edit, page /displayCRUD
 let editCrud = async (req, res) => {
   let userId = req.query.id;
   if (userId) {
-    let userInfo = await CRUDservice.getUserInfo(userId);
+    let userInfo = await CRUDservice.getDataToEditUser(userId);
     // console.log("user info from homeController.js > editCrud \n", userInfo);
     // return res.send("found an user: " + userInfo.firstName);
     return res.render("editUser.ejs", {
@@ -59,8 +60,10 @@ let editCrud = async (req, res) => {
   return res.send("found no user");
 };
 
-let updateCrud = (req, res) => {
-  res.send("updateCrud page kara");
+let updateCrud = async(req, res) => {
+  let data = req.body
+  await CRUDservice.updateUser(data);
+  return res.send("update ok");
 };
 
 module.exports = {
