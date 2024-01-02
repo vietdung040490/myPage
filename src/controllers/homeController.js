@@ -1,4 +1,3 @@
-import db from "../models/index";
 import CRUDservice from "../services/CRUDservice";
 
 //open Home page
@@ -45,7 +44,8 @@ let displayCRUD = async (req, res) => {
   });
 };
 
-//edit user, click button: edit, page /displayCRUD
+//edit user, click button: edit ở page "displayCRUD.ejs", sau đó render sang trang "editUser.ejs"
+//truyền userInfo cho trang "editUser.ejs"
 let editCrud = async (req, res) => {
   let userId = req.query.id;
   if (userId) {
@@ -60,10 +60,31 @@ let editCrud = async (req, res) => {
   return res.send("found no user");
 };
 
-let updateCrud = async(req, res) => {
-  let data = req.body
+//hành động update(click nút update) thì lấy dữ liệu từ trang web rồi đưa vào biến data
+//rồi sau đó dùng hàm update Crud để ghi dữ liệu vào database
+let updateCrud = async (req, res) => {
+  let data = req.body;
   await CRUDservice.updateUser(data);
-  return res.send(" new update ok");
+  const listUser = await CRUDservice.getAllUser();
+  return res.render("displayCRUD", {
+    data: listUser,
+    title: "Display all user",
+  });
+};
+
+//delete user
+let deleteCrud = async (req, res) => {
+  let userId = req.query.id;
+  if (userId) {
+    await CRUDservice.deleteUser(userId);
+    const listUser = await CRUDservice.getAllUser();
+    return res.render("displayCRUD", {
+      data: listUser,
+      title: "Display all user",
+    });
+  } else {
+    return res.send("page 404");
+  }
 };
 
 module.exports = {
@@ -74,4 +95,5 @@ module.exports = {
   displayCRUD: displayCRUD,
   editCrud: editCrud,
   updateCrud: updateCrud,
+  deleteCrud: deleteCrud,
 };

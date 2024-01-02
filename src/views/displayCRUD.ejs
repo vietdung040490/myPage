@@ -16,6 +16,7 @@
         background-color: rgb(70, 190, 70);
         border-radius: 8px;
         /* cursor: pointer; */
+        /* padding: 5px 10px; */
     }
 
     .btn-delete {
@@ -23,6 +24,8 @@
         background-color: red;
         border-radius: 8px;
         /* cursor: pointer; */
+        /* padding: 5px 10px; */
+
     }
 
     a {
@@ -67,8 +70,8 @@
                     <%= data[i].phoneNumber %>
                 </td>
                 <td>
-                    <a href="/editCrud?id=<%=data[i].id %>"><button class="btn-edit">Edit</button></a>
-                    <a href="/editCrud?id=<%=data[i].id %>"><button class="btn-delete">Delete</button></a>
+                    <a href="/editCrud?id=<%=data[i].id%>"><button class="btn-edit">Edit</button></a>
+                    <a href="/deleteCrud?id=<%=data[i].id%>"><button class="btn-delete">Delete</button></a>
                 </td>
             </tr>
             <%}%>
